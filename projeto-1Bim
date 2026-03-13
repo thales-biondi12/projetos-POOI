@@ -1,59 +1,17 @@
-print('PROGRAMA DE SALTOS EM DISTÂNCIA')
+numalunos = int(input('digite o valor total de estudantes na turma: '))
 
-melhor_media_geral = 0
-campeao = ''
+while numalunos < 0:
+    print('O valor digitado esta incorreto!')
+    numalunos = int(input('digite novamente o valor de alunos'))
 
-resposta = input('Deseja iniciar o programa? (s/n): ').lower()
+numdiciplina = int(input('digite o numero de diciplinas: '))
 
-while resposta == 's':
-    # leitura dos dados
-    atleta = input('Nome do atleta: ')
-    s1 = float(input('Primeiro salto: '))
-    s2 = float(input('Segundo salto: '))
-    s3 = float(input('Terceiro salto: '))
-    s4 = float(input('Quarto salto: '))
-    s5 = float(input('Quinto salto: '))
+while numdiciplina < 0:
+    print ('O valor digitado esta incorreto!')
+    numdiciplina = int(input('digite novamente o valor de diciplinas'))
 
-    # primeiro salto começa como melhor e pior
-    melhor = s1
-    pior = s1
+for x in range (1,numalunos+1):
+    print('aluno ',x ,': ')
 
-    # comparação para encontrar melhor e pior salto
-    if s2 > melhor:
-        melhor = s2
-    if s3 > melhor:
-        melhor = s3
-    if s4 > melhor:
-        melhor = s4
-    if s5 > melhor:
-        melhor = s5
-
-    if s2 < pior:
-        pior = s2
-    if s3 < pior:
-        pior = s3
-    if s4 < pior:
-        pior = s4
-    if s5 < pior:
-        pior = s5
-
-    # cálculo da média sem o melhor e o pior
-    soma = s1 + s2 + s3 + s4 + s5
-    soma3 = soma - melhor - pior
-    media = soma3 / 3
-
-    # verificação do campeão (empate favorece o último)
-    if media >= melhor_media_geral:
-        melhor_media_geral = media
-        campeao = atleta
-
-    # exibição dos resultados
-    print(f'\nATLETA: {atleta.upper()}')
-    print(f'Melhor salto: {melhor:.1f} m')
-    print(f'Pior salto: {pior:.1f} m')
-    print(f'Média dos demais saltos: {media:.1f} m\n')
-
-    resposta = input('Deseja continuar? (s/n): ').lower()
-
-print(f'ATLETA CAMPEÃO: {campeao.upper()}')
-print(f'MELHOR MÉDIA: {melhor_media_geral:.1f} m')
+    for y in range (1,numdiciplina+1):
+        nota = float(input(f'Digite a nota da materia(0 a 10) {y}: '))
