@@ -10,13 +10,13 @@ numalunos = int(input('digite o valor total de estudantes na turma: '))
 
 while numalunos < 0:
     print('\nO valor digitado esa incorreto!')
-    numalunos = int(input('\ndigite novamente o valor de alunos'))
+    numalunos = int(input('\ndigite novamente o valor de alunos: '))
 
 numdiciplina = int(input('\ndigite o numero de diciplinas: '))
 
 while numdiciplina < 0:
     print ('\nO valor digitado esa incorreto!')
-    numdiciplina = int(input('\ndigite novamente o valor de diciplinas'))
+    numdiciplina = int(input('\ndigite novamente o valor de diciplinas: '))
 
 for x in range (1,numalunos+1):
     print('\naluno ',x ,': ')
@@ -24,6 +24,9 @@ for x in range (1,numalunos+1):
 
     for y in range (1,numdiciplina+1):
         nota = float(input('Digite a nota da materia {}: '.format(y)))
+        while (nota < 0):
+            print ('\nO valor digitado esa incorreto!')
+            nota = float(input('Digite a nota da materia {}: '.format(y)))
         notasomada += nota
 
     media = notasomada/numdiciplina
