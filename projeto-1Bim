@@ -1,17 +1,78 @@
+alunoscima = 0
+alunosbaixo = 0
+todasmedias = 0
+maiormedia = 0
+menormedia = 0
+primeiramedia = 0
+ultimamedia = 0
+
 numalunos = int(input('digite o valor total de estudantes na turma: '))
 
 while numalunos < 0:
-    print('O valor digitado esta incorreto!')
-    numalunos = int(input('digite novamente o valor de alunos'))
+    print('\nO valor digitado esa incorreto!')
+    numalunos = int(input('\ndigite novamente o valor de alunos'))
 
-numdiciplina = int(input('digite o numero de diciplinas: '))
+numdiciplina = int(input('\ndigite o numero de diciplinas: '))
 
 while numdiciplina < 0:
-    print ('O valor digitado esta incorreto!')
-    numdiciplina = int(input('digite novamente o valor de diciplinas'))
+    print ('\nO valor digitado esa incorreto!')
+    numdiciplina = int(input('\ndigite novamente o valor de diciplinas'))
 
 for x in range (1,numalunos+1):
-    print('aluno ',x ,': ')
+    print('\naluno ',x ,': ')
+    notasomada = 0
 
     for y in range (1,numdiciplina+1):
-        nota = float(input(f'Digite a nota da materia(0 a 10) {y}: '))
+        nota = float(input('Digite a nota da materia {}: '.format(y)))
+        notasomada += nota
+
+    media = notasomada/numdiciplina
+    todasmedias += media
+    print('\nA media do aluno foi: {}'.format(media))
+
+    if media >= 6:
+        print('O aluno foi aprovado!')
+        alunoscima = alunoscima + 1
+    else:
+        print('O aluno foi reprovado!')
+        alunosbaixo = alunosbaixo + 1
+
+    if maiormedia == 0:
+        maiormedia = media
+        menormedia = media
+    else:
+        if media > maiormedia:
+            maiormedia = media
+
+        if media < menormedia:
+            menormedia = media
+
+    if x == 1:
+        primeiramedia = media
+
+    if x == numalunos:
+        ultimamedia = media
+
+todasmedias = todasmedias/numalunos
+
+if todasmedias < 5 or menormedia < 3:
+    print('\nA sala teve Desenpenho insuficiente!')
+
+elif ultimamedia > primeiramedia and todasmedias >= 7:
+    print('\nDesempenho consistente e positivo!')
+
+elif ultimamedia < primeiramedia and todasmedia < 5:
+    print ('\nA turma teve uma queda no desempenho!')
+
+elif ultimamedia == primeiramedia:
+    print('\nDesempenho equilibrado!')
+
+else:
+    print('\nA turma teve um desempenho irregular!')
+
+
+print('\nA media de todos os alunos da turma foi {}'.format(todasmedias))
+print('A quantidade de alunos abaixo da media foi {}'.format(alunosbaixo))
+print('A quantidade de alunos acima da media foi {}'.format(alunoscima))
+print('A menor media foi {}'.format(menormedia))
+print('A maior media foi {}'.format(maiormedia))
