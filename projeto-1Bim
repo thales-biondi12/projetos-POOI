@@ -6,44 +6,51 @@ menormedia = 0
 primeiramedia = 0
 ultimamedia = 0
 
-print('===================================================')
-print('Sistema para analisar o desempenho final dos alunos ')
-print('===================================================')
+print("=" * 60)
+print("     SISTEMA DE DESEMPENHO FINAL DOS ALUNOS")
+print("=" * 60)
 
-numalunos = int(input('\ndigite o valor total de estudantes na turma: '))
+numalunos = int(input("\nDigite o total de estudantes na turma: "))
 
-while numalunos < 0:
-    print('\nO valor digitado esa incorreto!')
-    numalunos = int(input('\ndigite novamente o valor de alunos: '))
+while numalunos <= 0:
+    print("\n Valor inválido!")
+    numalunos = int(input("Digite novamente o total de alunos: "))
 
-numdiciplina = int(input('\ndigite o numero de diciplinas: '))
+numdiciplina = int(input("\nDigite o número de disciplinas: "))
 
 while numdiciplina < 0:
-    print ('\nO valor digitado esa incorreto!')
-    numdiciplina = int(input('\ndigite novamente o valor de diciplinas: '))
+    print("[ERRO] Valor inválido!")
+    numdiciplina = int(input("Digite novamente o número de disciplinas: "))
 
 
-for x in range (1,numalunos+1):
-    print('\naluno ',x ,': ')
+print("\n" + "=" * 60)
+
+for x in range(1, numalunos + 1):
+    print(f"\n>>> ALUNO {x}")
+    print("-" * 30)
+
     notasomada = 0
 
-    for y in range (1,numdiciplina+1):
-        nota = float(input('Digite a nota da materia {}: '.format(y)))
-        while (nota < 0 or nota > 10):
-            print ('\nO valor (0 a 10)!')
-            nota = float(input('Digite a nota da materia {}: '.format(y)))
+    for y in range(1, numdiciplina + 1):
+        nota = float(input(f"Nota da matéria {y}: "))
+
+        while nota < 0 or nota > 10:
+            print("A nota deve estar entre 0 e 10!")
+            nota = float(input(f"Nota da matéria {y}: "))
+
         notasomada += nota
 
-    media = notasomada/numdiciplina
+    media = notasomada / numdiciplina
     todasmedias += media
-    print('\nA media do aluno foi: {}'.format(media))
+
+    print(f"\nMédia do aluno: {media:.2f}")
 
     if media >= 6:
-        print('O aluno foi aprovado!')
-        alunoscima = alunoscima + 1
+        print("Status: APROVADO")
+        alunoscima += 1
     else:
-        print('O aluno foi reprovado!')
-        alunosbaixo = alunosbaixo + 1
+        print("Status: REPROVADO")
+        alunosbaixo += 1
 
     if maiormedia == 0:
         maiormedia = media
@@ -61,30 +68,37 @@ for x in range (1,numalunos+1):
     if x == numalunos:
         ultimamedia = media
 
-todasmedias = todasmedias/numalunos
+
+todasmedias = todasmedias / numalunos
+
+print("\n" + "=" * 60)
+print("               ANÁLISE DA TURMA")
+print("=" * 60)
 
 if todasmedias < 5 or menormedia < 3:
-    print('\nA sala teve Desenpenho insuficiente!')
+    print("\n>> Desempenho insuficiente!")
 
 elif ultimamedia > primeiramedia and todasmedias >= 7:
-    print('\nDesempenho consistente e positivo!')
+    print("\n>> Desempenho consistente e positivo!")
 
 elif ultimamedia < primeiramedia and todasmedias < 5:
-    print ('\nA turma teve uma queda no desempenho!')
+    print("\n>> Houve queda no desempenho da turma!")
 
 elif ultimamedia == primeiramedia:
-    print('\nDesempenho equilibrado!')
+    print("\n>> Desempenho equilibrado!")
 
 else:
-    print('\nA turma teve um desempenho irregular!')
+    print("\n>> Desempenho irregular!")
 
 
-print('\n=========================Resultados===============================')
+print("\n" + "=" * 60)
+print("                 RESULTADOS")
+print("=" * 60)
 
-print('A media de todos os alunos da turma foi {}'.format(todasmedias))
-print('A quantidade de alunos abaixo da media foi {}'.format(alunosbaixo))
-print('A quantidade de alunos acima da media foi {}'.format(alunoscima))
-print('A menor media foi {}'.format(menormedia))
-print('A maior media foi {}'.format(maiormedia))
+print(f"Média geral da turma: {todasmedias:.2f}")
+print(f"Alunos aprovados: {alunoscima}")
+print(f"Alunos reprovados: {alunosbaixo}")
+print(f"Menor média: {menormedia:.2f}")
+print(f"Maior média: {maiormedia:.2f}")
 
-print('\n======================================================================')
+print("=" * 60)
