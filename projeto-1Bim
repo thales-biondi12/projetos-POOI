@@ -7,21 +7,20 @@ primeiramedia = 0
 ultimamedia = 0
 
 print("=" * 60)
-print("     SISTEMA DE DESEMPENHO FINAL DOS ALUNOS")
+print("           SISTEMA DE DESEMPENHO FINAL DOS ALUNOS")
 print("=" * 60)
 
 numalunos = int(input("\nDigite o total de estudantes na turma: "))
 
 while numalunos <= 0:
-    print("\n Valor inválido!")
+    print("\n[ERRO] Valor inválido!")
     numalunos = int(input("Digite novamente o total de alunos: "))
 
 numdiciplina = int(input("\nDigite o número de disciplinas: "))
 
 while numdiciplina < 0:
-    print("[ERRO] Valor inválido!")
+    print("\n[ERRO] Valor inválido!")
     numdiciplina = int(input("Digite novamente o número de disciplinas: "))
-
 
 print("\n" + "=" * 60)
 
@@ -35,7 +34,7 @@ for x in range(1, numalunos + 1):
         nota = float(input(f"Nota da matéria {y}: "))
 
         while nota < 0 or nota > 10:
-            print("A nota deve estar entre 0 e 10!")
+            print("[ERRO] A nota deve estar entre 0 e 10!")
             nota = float(input(f"Nota da matéria {y}: "))
 
         notasomada += nota
@@ -68,11 +67,10 @@ for x in range(1, numalunos + 1):
     if x == numalunos:
         ultimamedia = media
 
-
 todasmedias = todasmedias / numalunos
 
 print("\n" + "=" * 60)
-print("               ANÁLISE DA TURMA")
+print("                    ANÁLISE DA TURMA")
 print("=" * 60)
 
 if todasmedias < 5 or menormedia < 3:
@@ -90,9 +88,8 @@ elif ultimamedia == primeiramedia:
 else:
     print("\n>> Desempenho irregular!")
 
-
 print("\n" + "=" * 60)
-print("                 RESULTADOS")
+print("                      RESULTADOS")
 print("=" * 60)
 
 print(f"Média geral da turma: {todasmedias:.2f}")
