@@ -1,0 +1,136 @@
+times = []
+
+print("=" * 50)
+print("        SISTEMA DE CAMPEONATO DE TIMES")
+print("=" * 50)
+
+continuar = "s"
+
+while continuar == "s" or continuar == "S":
+
+    dados = {}
+    pontos = ()
+
+    print("\n" + "-" * 50)
+
+    dados['nome'] = input("Nome do time: ")
+
+    entrada = input(
+        "Digite os pontos das últimas 5 partidas: "
+    ).split()
+
+    quantidade = 0
+
+    for i in entrada:
+        quantidade += 1
+
+    while quantidade != 5:
+
+        quantidade = 0
+
+        print("\nEntrada inválida!!!")
+
+        entrada = input(
+            "Digite APENAS os pontos das últimas 5 partidas: "
+        ).split()
+
+        for i in entrada:
+            quantidade += 1
+
+    for i in entrada:
+
+        valor = int(i)
+
+        while valor != 0 and valor != 1 and valor != 3:
+
+            print("\nEntrada inválida!!!")
+            valor = int(input("Digite novamente (0,1 ou 3): "))
+
+        pontos += (valor,)
+
+    dados['pontos_partidas'] = pontos
+
+    dados['soma_pontos'] = 0
+
+    for z in pontos:
+        dados['soma_pontos'] += z
+
+    dados['vitorias'] = 0
+
+    for k in pontos:
+
+        if k == 3:
+            dados['vitorias'] += 1
+
+    dados['aproveitamento'] = f"{(dados['soma_pontos'] / 15) * 100:.2f}"
+
+    times.append(dados.copy())
+
+    continuar = input("\nDeseja adicionar mais um time? (s/n): ")
+
+print("\n" + "=" * 50)
+print("              LISTA DOS TIMES")
+print("=" * 50)
+
+for time in times:
+
+    print("\n" + "-" * 50)
+    print(f"Nome do Time     : {time['nome']}")
+    print(f"Pontos Partidas  : {time['pontos_partidas']}")
+    print(f"Total de Pontos  : {time['soma_pontos']}")
+    print(f"Vitórias         : {time['vitorias']}")
+    print(f"Aproveitamento   : {time['aproveitamento']}%")
+
+primeiro = True
+
+for time in times:
+
+    if primeiro:
+
+        campeao = time
+        vice = time
+        mais_vitorias = time
+        menos_pontos = time
+
+        primeiro = False
+
+    else:
+
+        if time['soma_pontos'] > campeao['soma_pontos']:
+
+            vice = campeao
+            campeao = time
+
+        elif time['soma_pontos'] > vice['soma_pontos'] and time != campeao:
+
+            vice = time
+
+        elif vice == campeao and time != campeao:
+
+            vice = time
+
+        if time['vitorias'] > mais_vitorias['vitorias']:
+
+            mais_vitorias = time
+
+        if time['soma_pontos'] < menos_pontos['soma_pontos']:
+
+            menos_pontos = time
+
+print("\n" + "=" * 50)
+print("            RESULTADO FINAL")
+print("=" * 50)
+
+print(f"\nCAMPEÃO              : {campeao['nome']}")
+print(f"PONTOS               : {campeao['soma_pontos']}")
+
+print(f"\nVICE-CAMPEÃO         : {vice['nome']}")
+print(f"PONTOS               : {vice['soma_pontos']}")
+
+print(f"\nTIME COM MAIS VITÓRIAS : {mais_vitorias['nome']}")
+print(f"VITÓRIAS               : {mais_vitorias['vitorias']}")
+
+print(f"\nTIME COM MENOS PONTOS : {menos_pontos['nome']}")
+print(f"PONTOS                : {menos_pontos['soma_pontos']}")
+
+print("\n" + "=" * 50)
