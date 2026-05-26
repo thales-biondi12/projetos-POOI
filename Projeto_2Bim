@@ -95,16 +95,46 @@ for time in times:
 
             menos_pontos = time
 
+
+print("\n" + "=" * 50)
+print("        ESTRUTURA DA LISTA TIMES")
+print("=" * 50)
+
+print("times = [")
+
+for time in times:
+
+    print("    {")
+
+    print(f'        "nome": "{time["nome"]}",')
+    print(f'        "pontos_partidas": {time["pontos_partidas"]},')
+    print(f'        "total": {time["soma_pontos"]}')
+
+    print("    },")
+
+print("]")
+
 print("\n" + "=" * 50)
 print("              LISTA DOS TIMES")
 print("=" * 50)
 
 for time in times:
 
+    vitorias = 0
+
+    for ponto in time['pontos_partidas']:
+
+        if ponto == 3:
+            vitorias += 1
+
+    aproveitamento = (time['soma_pontos'] / 15) * 100
+
     print("\n" + "-" * 50)
     print(f"Nome do Time     : {time['nome']}")
     print(f"Pontos Partidas  : {time['pontos_partidas']}")
     print(f"Total de Pontos  : {time['soma_pontos']}")
+    print(f"Vitórias         : {vitorias}")
+    print(f"Aproveitamento   : {aproveitamento:.2f}%")
 
 print("\n" + "=" * 50)
 print("            RESULTADO FINAL")
@@ -113,22 +143,10 @@ print("=" * 50)
 print(f"\nCAMPEÃO               : {campeao['nome']}")
 print(f"PONTOS                : {campeao['soma_pontos']}")
 
-aproveitamento_campeao = (campeao['soma_pontos'] / 15) * 100
-
-print(f"APROVEITAMENTO        : {aproveitamento_campeao:.2f}%")
-
 print(f"\nVICE-CAMPEÃO          : {vice['nome']}")
 print(f"PONTOS                : {vice['soma_pontos']}")
 
-aproveitamento_vice = (vice['soma_pontos'] / 15) * 100
-
-print(f"APROVEITAMENTO        : {aproveitamento_vice:.2f}%")
-
 print(f"\nTIME COM MENOS PONTOS : {menos_pontos['nome']}")
 print(f"PONTOS                : {menos_pontos['soma_pontos']}")
-
-aproveitamento_menos = (menos_pontos['soma_pontos'] / 15) * 100
-
-print(f"APROVEITAMENTO        : {aproveitamento_menos:.2f}%")
 
 print("\n" + "=" * 50)
