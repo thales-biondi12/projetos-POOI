@@ -15,38 +15,43 @@ while continuar == "s" or continuar == "S":
 
     dados['nome'] = input("Nome do time: ")
 
-    entrada = input(
-        "Digite os pontos das últimas 5 partidas: "
-    ).split()
+    entrada = input("Digite os pontos das últimas 5 partidas: ").split()
 
-    quantidade = 0
+    while True:
 
-    for i in entrada:
-        quantidade += 1
+        if len(entrada) != 5:
 
-    while quantidade != 5:
+            print("Entrada inválida!!!")
 
-        quantidade = 0
+            entrada = input(
+                "Digite APENAS 5 pontos: "
+            ).split()
 
-        print("\nEntrada inválida!!!")
+            continue
 
-        entrada = input(
-            "Digite APENAS os pontos das últimas 5 partidas: "
-        ).split()
+        pontos = ()
+
+        valido = True
 
         for i in entrada:
-            quantidade += 1
 
-    for i in entrada:
+            valor = int(i)
 
-        valor = int(i)
+            if valor != 0 and valor != 1 and valor != 3:
 
-        while valor != 0 and valor != 1 and valor != 3:
+                valido = False
 
-            print("\nEntrada inválida!!!")
-            valor = int(input("Digite novamente (0,1 ou 3): "))
+            pontos += (valor,)
 
-        pontos += (valor,)
+        if valido:
+
+            break
+
+        print("Entrada inválida!!!")
+
+        entrada = input(
+            "Digite novamente os 5 pontos: "
+        ).split()
 
     dados['pontos_partidas'] = pontos
 
