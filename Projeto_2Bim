@@ -4,9 +4,9 @@ print("=" * 50)
 print("        SISTEMA DE CAMPEONATO DE TIMES")
 print("=" * 50)
 
-continuar = "s"
+continuar = "S"
 
-while continuar == "s" or continuar == "S":
+while continuar == "S" :
 
     dados = {}
     pontos = ()
@@ -71,7 +71,7 @@ while continuar == "s" or continuar == "S":
 
     times.append(dados.copy())
 
-    continuar = input("\nDeseja adicionar mais um time? (s/n): ")
+    continuar = input("\nDeseja adicionar mais um time? (s/n): ").upper()
 
 print("\n" + "=" * 50)
 print("              LISTA DOS TIMES")
